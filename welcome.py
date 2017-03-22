@@ -28,6 +28,7 @@ def WelcomeToMyapp():
 @app.route('/api/people')
 def GetPeople():
     list = [
+        {'name': 'Allan', 'age': 47},
         {'name': 'John', 'age': 28},
         {'name': 'Bill', 'val': 26}
     ]
