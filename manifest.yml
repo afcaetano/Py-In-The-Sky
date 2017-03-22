@@ -1,0 +1,11 @@
+applications:
+- path: .
+  memory: 128M
+  instances: 1
+  domain: mybluemix.net
+  name: Py In The Sky
+  host: pyinthesky
+  disk_quota: 1024M
+  services:
+  - Product Insights-my
+  buildpack: python_buildpack
