@@ -13,12 +13,13 @@
 # limitations under the License.
 
 import os
-from flask import Flask, jsonify
+from flask import Flask, jsonify, url_for
 
 app = Flask(__name__)
 
+# Index
 @app.route('/')
-def Welcome():
+def index():
     return app.send_static_file('index.html')
 
 @app.route('/myapp')
@@ -34,6 +35,12 @@ def GetPeople():
     ]
     return jsonify(results=list)
 
+@app.route('/hello')
+@app.route('/hello/<string:name>')
+def greet(name='Stranger'):
+    # return template('<html><head>Greetings</head><body><p>Hello <b>{{name}}</b>, how are you?</body></html>', name=name)
+    return '<html><head>Greetings</head><body><p>Hello <b>%s</b>, how are you?</body></html>' % name
+
 @app.route('/api/people/<name>')
 def SayHello(name):
     message = {
@@ -41,6 +48,18 @@ def SayHello(name):
     }
     return jsonify(results=message)
 
-port = os.getenv('PORT', '5000')
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        do_the_login()
+    else:
+        show_the_login_form()
+
+def do_the_login():
+    pass
+
+def show_the_login_form():
+    return '<html><head>Login</head><body><p>Login:</p></body></html>'
+
 if __name__ == "__main__":
-	app.run(host='0.0.0.0', port=int(port))
+    app.run(host='0.0.0.0', port=int(os.getenv('PORT', '5000')))
