@@ -39,7 +39,11 @@ def GetPeople():
 @app.route('/hello/<string:name>')
 def greet(name='Stranger'):
     return render_template('<html><head>Greetings</head><body><p>Hello <b>{{name}}</b>, how are you?</body></html>', name=name)
-    return '<html><head>Greetings</head><body><p>Hello <b>%s</b>, how are you?</body></html>' % name
+    # return '<html><head>Greetings</head><body><p>Hello <b>%s</b>, how are you?</body></html>' % name
+
+@app.route('/env/')
+def getEnv():
+    return 'FOOBAR= [%s]' % os.getenv('FOOBAR')
 
 @app.route('/api/people/<name>')
 def SayHello(name):

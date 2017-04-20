@@ -1,6 +1,6 @@
-# Python Flask Hello World Sample
+# Py In The Sky
 
-This application demonstrates a simple, reusable Python web application based on the [Flask microframework](http://flask.pocoo.org/).
+Some day, this sample Python Flask application will do something useful
 
 ## Run the app locally
 
